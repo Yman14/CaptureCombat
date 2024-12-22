@@ -10,6 +10,13 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        // Create and add a new creature to the player's roster
+        //name, level, hp, attack, defense, speed, criticalrate
+        Creature newCreature = new Creature("King Kong", 1, 100, 20, 10, 5, 20);
+        playerCreatures.Add(newCreature);
+        Debug.Log($"Added {newCreature.name} with Attack: {newCreature.attack}, Defense: {newCreature.defense}");
+        
+        
         SpawnCreatures();
     }
 
@@ -17,8 +24,8 @@ public class GameManager : MonoBehaviour
     {
         foreach (var creature in playerCreatures)
         {
-            creature.Train();
-            Debug.Log($"{creature.name} is now Level {creature.level}");
+            //creature.Train();
+            //Debug.Log($"{creature.name} is now Level {creature.level}");
         }
     }
 

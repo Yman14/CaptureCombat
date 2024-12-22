@@ -8,4 +8,6 @@ public class ButtonManager : MonoBehaviour
     {
         gameManager.CaptureRandomCreature();
     }
+
+    
 }

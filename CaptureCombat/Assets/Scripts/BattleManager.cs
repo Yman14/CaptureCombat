@@ -1,55 +1,195 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class BattleManager : MonoBehaviour
 {
-    public TMP_Text battleLog;
-    string result = "[Battle Log]";
+    public GameObject BattleUI;
 
-    public void Update()
+    public TMP_Text playerNameText;
+    public TMP_Text playerLevelText;
+    public TMP_Text playerHpText;
+    public Image playerHealthBar;
+
+    public TMP_Text enemyNameText;
+    public TMP_Text enemyLevelText;
+    public TMP_Text enemyHpText;
+    public Image enemyHealthBar;
+
+    public TMP_Text battleLog;
+
+    public Creature playerCreature;
+    public Creature enemyCreature;
+
+    public Image playerSprite;
+    public Image enemySprite;
+
+    public GameObject playerSpritePrefab;
+    public Transform playerSpawnPoint;
+    public GameObject enemySpritePrefab;
+    public Transform enemySpawnPoint;
+
+    public string spritePath;
+
+
+    string result;
+
+
+    //Health Bar Update
+    public void UpdateHealth(Creature creature, Image healthBar)
     {
-            battleLog.text = result;
+        healthBar.fillAmount = creature.hp / 100f; // Assuming max HP is 100
     }
+
+    public void AnimateHealthBar(Image healthBar, float currentHP, float maxHP)
+    {
+        StartCoroutine(SmoothHealthBar(healthBar, currentHP / maxHP));
+    }
+
+
+    //Health bar animation when taking damage
+    //AnimateHealthBar(playerHealthBar, playerCreature.hp, 100f);
+    private IEnumerator SmoothHealthBar(Image healthBar, float targetFill)
+    {
+        float currentFill = healthBar.fillAmount;
+        float elapsed = 0f;
+        float duration = 0.5f; // Duration of the animation
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            healthBar.fillAmount = Mathf.Lerp(currentFill, targetFill, elapsed / duration);
+            yield return null;
+        }
+
+        healthBar.fillAmount = targetFill; // Ensure it reaches exactly the target
+    }
+
+
+
+    //Battle Log Prompt Message
+    public void LogAction(string message)
+    {
+        battleLog.text += message + "\n";
+    }
+
 
 
     public void StartBattle()
     {
-        //name, level, hp, attack, defense, speed, criticalrate
-        Creature playerCreature = new Creature("Glowpaw", 1, 100, 10, 5, 12, 0.2f);
-        Creature enemyCreature = new Creature("Darkfang", 1, 100, 8, 6, 10, 0.15f);
+        // Initialize creatures (you can add a setup phase later)
+        playerCreature = new Creature("Glowpaw", 1, 100, 10, 5, 12, 0.2f);
+        enemyCreature = new Creature("Darkfang", 1, 100, 8, 6, 10, 0.15f);
 
-        SimulateBattle(playerCreature, enemyCreature);
+        BattleUI.SetActive(true);
+        UpdateUI();
+        SetupBattleUI();
+        LogAction($"A wild {enemyCreature.name} appeared! Get ready to battle!");
     }
 
-    public void SimulateBattle(Creature player, Creature enemy)
+    // Process the player's attack action
+    public void PlayerAttack()
     {
-        result = $"{player.name} vs {enemy.name}";
-        Debug.Log(result);
+        float damage = CalculateDamage(playerCreature, enemyCreature);
+        enemyCreature.hp -= damage;
+        enemyHpText.text = enemyCreature.hp.ToString();
+        AnimateHealthBar(enemyHealthBar, enemyCreature.hp, 100f);
+        LogAction($"{playerCreature.name} attacks {enemyCreature.name} for {damage} damage!");
 
-        while (player.hp > 0 && enemy.hp > 0)
+        if (enemyCreature.hp <= 0)
         {
-            // Player attacks
-            float playerDamage = (10 * (player.attack / enemy.defense)) + Random.Range(1, 5);
-            enemy.hp -= playerDamage;
-            result = $"{player.name} deals {playerDamage} damage! {enemy.name} has {enemy.hp} HP left.";
-            Debug.Log(result);
-            if (enemy.hp <= 0)
-            {
-                result = $"{enemy.name} fainted. {player.name} wins!";
-                break;
-            }
+            LogAction($"{enemyCreature.name} fainted! You win!");
+            EndBattle(true);
+            return;
+        }
 
-            // Enemy attacks
-            float enemyDamage = (10 * (enemy.attack / player.defense)) + Random.Range(1, 5);
-            player.hp -= enemyDamage;
-            result = $"{enemy.name} deals {enemyDamage} damage! {player.name} has {player.hp} HP left.";
-            Debug.Log(result);
-            if (player.hp <= 0)
-            {
-                result = $"{player.name} fainted. {enemy.name} wins!";
-                break;
-            }
+        EnemyTurn();
+    }
+
+    // Process the player's defend action
+    public void PlayerDefend()
+    {
+        LogAction($"{playerCreature.name} braces for impact!");
+        playerCreature.defense *= 1.5f; // Temporarily boost defense
+        EnemyTurn();
+        playerCreature.defense /= 1.5f; // Reset defense after turn
+    }
+
+    // Use Item (e.g., Heal Potion)
+    public void UseItem()
+    {
+        LogAction($"{playerCreature.name} uses a healing potion!");
+        playerCreature.hp += 20f;
+        playerHpText.text = playerCreature.hp.ToString();
+        if (playerCreature.hp > 100f) playerCreature.hp = 100f; // Cap HP
+        AnimateHealthBar(playerHealthBar, playerCreature.hp, 100f);
+        LogAction($"{playerCreature.name} recovers health!");
+
+        EnemyTurn();
+    }
+
+    // Process the enemy's turn
+    private void EnemyTurn()
+    {
+        LogAction($"{enemyCreature.name} attacks!");
+
+        float damage = CalculateDamage(enemyCreature, playerCreature);
+        playerCreature.hp -= damage;
+        playerHpText.text = playerCreature.hp.ToString();
+        AnimateHealthBar(playerHealthBar, playerCreature.hp, 100f);
+        LogAction($"{enemyCreature.name} deals {damage} damage to {playerCreature.name}!");
+
+        if (playerCreature.hp <= 0)
+        {
+            LogAction($"{playerCreature.name} fainted! You lose!");
+            EndBattle(false);
         }
     }
+
+    // End the battle
+    private void EndBattle(bool playerWon)
+    {
+        if (playerWon)
+        {
+            LogAction("Congratulations! You won the battle!");
+        }
+        else
+        {
+            LogAction("You lost the battle! Better luck next time.");
+        }
+    }
+
+    // Damage calculation logic
+    private float CalculateDamage(Creature attacker, Creature defender)
+    {
+        return (10 * (attacker.attack / defender.defense)) + Random.Range(1, 5);
+    }
+
+    // Update UI elements
+    private void UpdateUI()
+    {
+        playerNameText.text = playerCreature.name;
+        playerLevelText.text = $"Lvl: {playerCreature.level}";
+        playerHpText.text = playerCreature.hp.ToString();
+        enemyNameText.text = enemyCreature.name;
+        enemyLevelText.text = $"Lvl {enemyCreature.level}";
+        enemyHpText.text = enemyCreature.hp.ToString();
+
+        AnimateHealthBar(playerHealthBar, playerCreature.hp, 100f);
+        AnimateHealthBar(enemyHealthBar, enemyCreature.hp, 100f);
+    }
+
+    //spawing creature  
+    private void SetupBattleUI()
+    {
+        Instantiate(playerSpritePrefab, playerSpawnPoint, false);
+        Instantiate(enemySpritePrefab, enemySpawnPoint, false);
+
+        playerSprite.sprite = Resources.Load<Sprite>("Prefabs/Creatures/Glowpaw");
+        enemySprite.sprite = Resources.Load<Sprite>("Sprites/Darkfang");
+    }
+
+    
+
 }
