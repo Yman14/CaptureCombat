@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4ce21c166f1539a42a8cd753de460517
+guid: 6a202213b3a89f94296e34acab0cd6aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2059610988437230803
-    second: draft screen_0
+      213: 4130640169021434097
+    second: 5_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: draft screen_0
+      name: 5_0
       rect:
         serializedVersion: 2
-        x: 77
-        y: 51
-        width: 872
-        height: 1686
+        x: 0
+        y: 0
+        width: 928
+        height: 1232
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d4da4d1845359c10800000000000000
-      internalID: 2059610988437230803
+      spriteID: 1f86b71495bf25930800000000000000
+      internalID: 4130640169021434097
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a36254ee6556a9b438a11680a7bed2f0
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      draft screen_0: 2059610988437230803
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

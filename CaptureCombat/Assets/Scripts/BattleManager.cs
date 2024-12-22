@@ -183,7 +183,7 @@ public class BattleManager : MonoBehaviour
     //spawing creature  
     private void SetupBattleUI()
     {
-        Instantiate(playerSpritePrefab, playerSpawnPoint, false);
+        Instantiate(playerSpritePrefab, playerSpawnPoint.transform.position, Quaternion.Euler(0,180,0), playerSpawnPoint);
         Instantiate(enemySpritePrefab, enemySpawnPoint, false);
 
         playerSprite.sprite = Resources.Load<Sprite>("Prefabs/Creatures/Glowpaw");
