@@ -14,7 +14,7 @@ public class NodeInteraction : MonoBehaviour
         if (eventType == "Battle")
         {
             // Example: Load a battle scene or open battle UI
-            SceneManager.LoadScene("BattleScene");
+            //SceneManager.LoadScene("BattleScene");
         }
         else if (eventType == "Treasure")
         {
