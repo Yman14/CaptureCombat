@@ -1,0 +1,12 @@
+# ninja log v5
+107	2702	7566658190227747	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	975774f792cc1aaf
+2707	4888	7566658211548067	C:/Users/User/Documents/GitHub/CaptureCombat/CaptureCombat/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/61443ipe/obj/arm64-v8a/libswappywrapper.so	12e4747197c8f552
+56	5604	7566658220015501	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	46817de0ec0d82ac
+96	5780	7566658222109552	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	575da6b4e6fd2492
+44	5864	7566658224066217	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	3b3ce4f1360e94d4
+1	5958	7566658225021741	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	26e82d22aae85167
+22	6044	7566658225939634	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	f6c0207a7784b972
+81	6088	7566658226353644	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	8fac578297cabdaa
+33	6569	7566658231080557	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	d5053d9777b615c3
+13	7021	7566658235635225	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	a3c09d687882644e
+7022	7289	7566658238439006	C:/Users/User/Documents/GitHub/CaptureCombat/CaptureCombat/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/61443ipe/obj/arm64-v8a/libgame.so	272458267d3d981d

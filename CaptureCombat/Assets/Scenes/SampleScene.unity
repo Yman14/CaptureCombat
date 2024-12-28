@@ -545,7 +545,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 5d3264b08a00e8f4ea914642f7d5b39f, type: 3}
   m_Resource: {fileID: 8300000, guid: 5d3264b08a00e8f4ea914642f7d5b39f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1.4
   Loop: 1
   Mute: 0
@@ -6118,8 +6118,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.53, y: -2.09}
-  m_SizeDelta: {x: 443.41, y: 210.88}
+  m_AnchoredPosition: {x: -2.38, y: -0.55}
+  m_SizeDelta: {x: 939.71, y: 213.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1501188288
 MonoBehaviour:
@@ -6141,9 +6141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Congratulations!
-
-    Quest: Find the [Holy Mystic]'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6170,15 +6168,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 58
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 45
+  m_fontSizeMin: 25
+  m_fontSizeMax: 58
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -7222,10 +7220,10 @@ RectTransform:
   - {fileID: 1501188287}
   m_Father: {fileID: 110369739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.7475833}
+  m_AnchorMin: {x: 0, y: 0.74731255}
   m_AnchorMax: {x: 1, y: 0.90200007}
-  m_AnchoredPosition: {x: -0.060058594, y: 0}
-  m_SizeDelta: {x: -0.12012, y: -0.000061035}
+  m_AnchoredPosition: {x: -0.05999756, y: 0}
+  m_SizeDelta: {x: -0.11999512, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1715838460
 MonoBehaviour:
@@ -7240,8 +7238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9725491, g: 0.9294118, b: 0.86666673, a: 0.77254903}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.9725491, g: 0.9294118, b: 0.86666673, a: 0}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7278,6 +7276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NotificationText: {fileID: 1501188288}
+  background: {fileID: 1715838460}
+  fadeDuration: 2
 --- !u!1 &1751607378
 GameObject:
   m_ObjectHideFlags: 0
