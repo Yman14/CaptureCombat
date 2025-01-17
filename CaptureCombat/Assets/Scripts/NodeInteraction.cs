@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement; // If you want to load a new scene
 
 public class NodeInteraction : MonoBehaviour
@@ -17,8 +18,9 @@ public class NodeInteraction : MonoBehaviour
             //SceneManager.LoadScene("BattleScene");
         }
         else if (eventType == "Treasure")
-        {
+        {   
             Debug.Log("Found treasure!");
+            FindAnyObjectByType<TreasureChestManager>().AddChest();
         }
     }
 }
