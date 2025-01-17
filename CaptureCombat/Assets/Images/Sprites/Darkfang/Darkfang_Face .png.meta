@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: dcdeb64155596fc4d828ec69d66a1c84
+guid: 03d9140136fd1274684a0fef5286eb6f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5453793492994509237
-    second: Darkfang-draft_0
+      213: -3423369147396421355
+    second: Darkfang_Face _0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Darkfang-draft_0
+      name: Darkfang_Face _0
       rect:
         serializedVersion: 2
         x: 0
-        y: 372
-        width: 212
-        height: 187
+        y: 0
+        width: 172
+        height: 156
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5b946445944cfab40800000000000000
-      internalID: 5453793492994509237
+      spriteID: 5198762f5efbd70d0800000000000000
+      internalID: -3423369147396421355
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d83d46e5c22cab24a95211cc3eea0543
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Darkfang-draft_0: 5453793492994509237
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

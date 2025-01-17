@@ -24,7 +24,7 @@ public class TreasureChestManager : MonoBehaviour
 
         // Show rewards after animation (use delay if needed).
         StartCoroutine(ShowRewards());
-        Destroy(chest, 2f); // Remove chest after animation.
+        Destroy(chest, 3f); // Remove chest after animation.
     }
 
     private IEnumerator ShowRewards()
