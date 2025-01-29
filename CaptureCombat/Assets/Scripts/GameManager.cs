@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     {
         // Create and add a new creature to the player's roster
         //name, level, hp, attack, defense, speed, criticalrate
-        Creature newCreature = new Creature("King Kong", 1, 100, 20, 10, 5, 20);
+        Creature newCreature = new Creature("King Kong", 1, "Earth", 100, 20, 10, 5, 0);
         playerCreatures.Add(newCreature);
         Debug.Log($"Added {newCreature.name} with Attack: {newCreature.attack}, Defense: {newCreature.defense}");
         

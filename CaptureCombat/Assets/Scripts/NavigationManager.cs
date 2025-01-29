@@ -3,18 +3,26 @@ using UnityEngine;
 
 public class NavigationManager: MonoBehaviour
 {
-    public GameObject HubPanel;
+    public GameObject MenuPanel;
+    public GameObject HomePanel;
     public GameObject BattlePanel;
+    public GameObject CreatureListPanel;
 
     public void SwitchToBattle()
     {
-        HubPanel.SetActive(false);
+        HomePanel.SetActive(false);
         BattlePanel.SetActive(true);
     }
 
-    public void SwitchToHub()
+    public void SwitchToHome()
     {
         BattlePanel.SetActive(false);
-        HubPanel.SetActive(true);
+        HomePanel.SetActive(true);
+    }
+
+    public void OpenCreatureListPanel()
+    {
+        MenuPanel.SetActive(false);
+        CreatureListPanel.SetActive(true);
     }
 }

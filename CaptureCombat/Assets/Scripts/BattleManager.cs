@@ -78,9 +78,9 @@ public class BattleManager : MonoBehaviour
 
     public void StartBattle()
     {
-        // Initialize creatures (you can add a setup phase later)
-        playerCreature = new Creature("Glowpaw", 1, 100, 10, 5, 12, 0.2f);
-        enemyCreature = new Creature("Darkfang", 1, 100, 8, 6, 10, 0.15f);
+        // Initialize creatures (can add a setup phase later)
+        playerCreature = new Creature("Glowpaw", 1, "Light", 100, 10, 5, 12, 0);
+        enemyCreature = new Creature("Darkfang", 1, "Shadow", 100, 8, 6, 10, 0);
 
         BattleUI.SetActive(true);
         UpdateUI();
@@ -91,7 +91,7 @@ public class BattleManager : MonoBehaviour
     // Process the player's attack action
     public void PlayerAttack()
     {
-        float damage = CalculateDamage(playerCreature, enemyCreature);
+        int damage = CalculateDamage(playerCreature, enemyCreature);
         enemyCreature.hp -= damage;
         enemyHpText.text = enemyCreature.hp.ToString();
         AnimateHealthBar(enemyHealthBar, enemyCreature.hp, 100f);
@@ -111,19 +111,19 @@ public class BattleManager : MonoBehaviour
     public void PlayerDefend()
     {
         LogAction($"{playerCreature.name} braces for impact!");
-        playerCreature.defense *= 1.5f; // Temporarily boost defense
+        playerCreature.defense *= 2; // Temporarily boost defense
         EnemyTurn();
-        playerCreature.defense /= 1.5f; // Reset defense after turn
+        playerCreature.defense /= 2; // Reset defense after turn
     }
 
     // Use Item (e.g., Heal Potion)
     public void UseItem()
     {
         LogAction($"{playerCreature.name} uses a healing potion!");
-        playerCreature.hp += 20f;
+        playerCreature.hp += 20;
         playerHpText.text = playerCreature.hp.ToString();
-        if (playerCreature.hp > 100f) playerCreature.hp = 100f; // Cap HP
-        AnimateHealthBar(playerHealthBar, playerCreature.hp, 100f);
+        if (playerCreature.hp > 100) playerCreature.hp = 100; // Cap HP
+        AnimateHealthBar(playerHealthBar, playerCreature.hp, 100);
         LogAction($"{playerCreature.name} recovers health!");
 
         EnemyTurn();
@@ -134,7 +134,7 @@ public class BattleManager : MonoBehaviour
     {
         LogAction($"{enemyCreature.name} attacks!");
 
-        float damage = CalculateDamage(enemyCreature, playerCreature);
+        int damage = CalculateDamage(enemyCreature, playerCreature);
         playerCreature.hp -= damage;
         playerHpText.text = playerCreature.hp.ToString();
         AnimateHealthBar(playerHealthBar, playerCreature.hp, 100f);
@@ -161,7 +161,7 @@ public class BattleManager : MonoBehaviour
     }
 
     // Damage calculation logic
-    private float CalculateDamage(Creature attacker, Creature defender)
+    private int CalculateDamage(Creature attacker, Creature defender)
     {
         return (10 * (attacker.attack / defender.defense)) + Random.Range(1, 5);
     }
