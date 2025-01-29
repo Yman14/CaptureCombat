@@ -8,8 +8,16 @@ public class NavigationManager: MonoBehaviour
     public GameObject BattlePanel;
     public GameObject CreatureListPanel;
 
+
+    void Awake()
+    {
+        BattlePanel.SetActive(false);
+        HomePanel.SetActive(true);
+    }
+
     public void SwitchToBattle()
     {
+        MenuPanel.SetActive(false);
         HomePanel.SetActive(false);
         BattlePanel.SetActive(true);
     }

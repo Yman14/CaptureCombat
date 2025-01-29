@@ -71,7 +71,7 @@ public class BattleManager : MonoBehaviour
     //Battle Log Prompt Message
     public void LogAction(string message)
     {
-        battleLog.text += message + "\n";
+        battleLog.text = message;
     }
 
 
