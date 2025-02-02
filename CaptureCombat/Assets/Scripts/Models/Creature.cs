@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [System.Serializable]
 public class Creature
@@ -29,7 +30,7 @@ public class Creature
     // Converts stats to a formatted string
     public string GetStatString()
     {
-        return $"ATK: {attack} | DEF: {defense} | SPD: {speed}";
+        return $"[ HP: {hp} ]\n[ ATK: {attack} ]\n[ DEF: {defense} ]\n[ SPD: {speed} ]\n[ CRIT Rate: {criticalRate} ]\n ";
     }
 
     // Simulate training (stat growth)
@@ -40,5 +41,11 @@ public class Creature
         attack += Random.Range(1, 3);    // Increase attack slightly
         defense += Random.Range(1, 3);  // Increase defense slightly
         speed += Random.Range(0.1f, 0.5f); // Increase speed slightly
+        
+        // Update the saved data after training
+        if (CreatureManager.Instance != null)
+        {
+            CreatureManager.Instance.SaveCreatures();
+        }
     }
 }

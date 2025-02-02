@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CreatureDetailPanel : MonoBehaviour
 {
     public static CreatureDetailPanel Instance;
     public Image creatureImage;
-    public Text creatureName, creatureLevel, creatureStats;
+    public TextMeshProUGUI creatureName, creatureLevel, creatureStats;
     public GameObject panel;
 
     private Creature currentCreature;
@@ -21,7 +22,7 @@ public class CreatureDetailPanel : MonoBehaviour
         currentCreature = creature;
         //creatureImage.sprite = creature.icon;
         creatureName.text = creature.name;
-        creatureLevel.text = "Lv. " + creature.level;
+        creatureLevel.text = "Lv. " + creature.level.ToString();
         creatureStats.text = creature.GetStatString(); // Convert stats to text format
         panel.SetActive(true);
     }
@@ -29,5 +30,11 @@ public class CreatureDetailPanel : MonoBehaviour
     public void ClosePanel()
     {
         panel.SetActive(false);
+    }
+
+    public void Traning()
+    {
+        currentCreature.Train();
+        ShowDetails(currentCreature);
     }
 }

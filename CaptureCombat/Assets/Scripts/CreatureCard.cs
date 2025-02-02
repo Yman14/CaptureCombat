@@ -6,6 +6,7 @@ public class CreatureCard : MonoBehaviour
 {
     public Image creatureIcon;
     public TextMeshProUGUI creatureName;
+    public TextMeshProUGUI creatureLevel;
     public Button detailsButton;
 
     private Creature creatureData;
@@ -16,6 +17,7 @@ public class CreatureCard : MonoBehaviour
         creatureData = data;
         //creatureIcon.sprite = data.creatureSprite;
         creatureName.text = data.name;
+        creatureLevel.text = data.level.ToString();
 
         // Add listener for the button
         detailsButton.onClick.AddListener(() => OpenCreatureDetails());
@@ -24,6 +26,7 @@ public class CreatureCard : MonoBehaviour
     // Opens a separate panel to show more details about the creature
     void OpenCreatureDetails()
     {
+        Debug.Log("Generating Creature Detail Panel.");
         CreatureDetailPanel.Instance.ShowDetails(creatureData);
     }
 }

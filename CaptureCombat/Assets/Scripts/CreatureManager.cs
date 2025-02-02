@@ -34,9 +34,13 @@ public class CreatureManager : MonoBehaviour
     //name, level, type, hp, attack, defense, speed, criticalrate
     private void GenerateStarterCreatures()
     {
-        playerCreatures.Add(new Creature("Glowpaw", 1, "Light", 100, 10, 5, 8, 0));
+        playerCreatures.Add(new Creature("Glowpaw", 10, "Light", 200, 40, 35, 13, 0));
         playerCreatures.Add(new Creature("Darkfang", 1, "Shadow", 100, 12, 6, 7, 0));
-        playerCreatures.Add(new Creature("Flame Whisk", 1, "Fire", 100, 8, 4, 10, 0));
+        playerCreatures.Add(new Creature("Flame Whisk", 25, "Fire", 350, 83, 79, 22, 0));
+        playerCreatures.Add(new Creature("Jadraque", -1, "Empty", -1, 0, 0, 0, 0));
+        playerCreatures.Add(new Creature("Bansale", -1, "Empty", -1, 0, 0, 0, 0));
+        playerCreatures.Add(new Creature("Romanos", -1, "Empty", -1, 0, 0, 0, 0));
+        playerCreatures.Add(new Creature("BaoBao", -1, "Empty", -1, 0, 0, 0, 0));
         SaveCreatures();
     }
 

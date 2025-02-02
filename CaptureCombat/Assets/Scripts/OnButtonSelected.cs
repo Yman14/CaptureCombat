@@ -6,6 +6,7 @@ public class OnButtonSelected : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     public void OnSelect(BaseEventData eventData)
     {
+
         transform.DOScale(1.075f, 0.075f).SetEase(Ease.InOutQuad);
     }
 

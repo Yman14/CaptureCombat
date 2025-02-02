@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Creature
   - Chest
+  - GameManager
   layers:
   - Default
   - TransparentFX
