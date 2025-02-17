@@ -19,3 +19,22 @@ public class InventoryItemUI : MonoBehaviour
         quantityText.text = item.quantity.ToString();
     }
 }
+
+
+/*using Addressables(putting it here for when resources.load is not good enough)
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
+public IEnumerator LoadIcon(string key, System.Action<Sprite> callback)
+{
+    AsyncOperationHandle<Sprite> handle = Addressables.LoadAssetAsync<Sprite>(key);
+    yield return handle;
+    if (handle.Status == AsyncOperationStatus.Succeeded)
+    {
+        callback(handle.Result);
+    }
+    else
+    {
+        Debug.LogError("Failed to load asset: " + key);
+    }
+}*/
